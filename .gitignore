@@ -1,0 +1,7 @@
+test/*
+data/*
+*.png
+*.dat
+*.csv
+*.txt
+archive/*
