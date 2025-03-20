@@ -290,16 +290,17 @@ def compare_stress_fields(nopre_stress_field, pre_stress_field, element_ids, are
 
     print(f"Total number of element IDs to compare: {len(element_ids)}")
 
-    for element_id, area in zip(element_ids, areas):
+    for element_id in element_ids:
         nopre_stress = nopre_stress_field.get(element_id)
         pre_stress = pre_stress_field.get(element_id)
+        area = areas[element_id]
 
         if nopre_stress is not None and pre_stress is not None:
             nopre_stress = np.array(nopre_stress)
             pre_stress = np.array(pre_stress)
 
-            # Calculate relative difference
-            relative_difference = 100 * (pre_stress - nopre_stress) / (np.abs(nopre_stress) + 1e-8)
+            # Compute the relative error using L2 norm.
+            relative_difference = 100 * np.abs(pre_stress - nopre_stress) / (np.abs(nopre_stress) + 1e-8)
             comparison[element_id] = relative_difference
 
             # Append weighted difference and update total area

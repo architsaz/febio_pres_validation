@@ -7,26 +7,26 @@ import csv
 #P = 106658  # Internal pressure in dyn/cm^2
 E = 10000000  # Young's modulus in dyn/cm^2
 nu = 0.49  # Poisson's ratio
-R = 0.05
+R = 0.15
 #t = 0.01
-z_min = 0.45
-z_max = 0.55
+z_min = 1.45
+z_max = 1.55
 
-feb_nopress_file_path = "data/nopress_1mm.feb"
-feb_press_file_path = "data/press_1mm.feb"
+feb_nopress_file_path = "data/nopress_3mm.feb"
+feb_press_file_path = "data/press_3mm.feb"
 master_feb_press_file_path = "data/master_press.feb"
-log_nopress_file_path = "data/nopress_1mm.log"
-log_press_file_path = "data/press_1mm.log"
+log_nopress_file_path = "data/nopress_3mm.log"
+log_press_file_path = "data/press_3mm.log"
 exe_path = "/dagon1/achitsaz/app/FEBioStudio/bin/febio4"
-#element_id_to_find = 3500  # Element ID to extract stress  for 3mm.feb
+element_id_to_find = 3500  # Element ID to extract stress  for 3mm.feb
 #element_id_to_find = 541  # Element ID to extract stress  for 2mm.feb
-element_id_to_find = 511  # Element ID to extract stress for 1mmfeb
+# element_id_to_find = 511  # Element ID to extract stress for 1mmfeb
 
 t_R_values = np.linspace(0.05, 0.3, 10)  # Range of thickness-to-radius ratios
 P_values = [79993,93325,106658,119989,133322,146654,159986]
 
 # Output file
-output_file = "stress_comparison_results_1mm.csv"
+output_file = "stress_comparison_results_3mm.csv"
 
 with open(output_file, mode="w", newline="") as file:
     writer = csv.writer(file)
